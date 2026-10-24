@@ -1,0 +1,13 @@
+Files read:        2
+Rows read:         14
+Blank rows:        1
+Duplicates merged: 4
+Needs review:      2
+Clean contacts:    7
+
+REVIEW  crm_export.csv line 4: invalid email
+MERGED  event_signups.csv line 2: duplicate of John Smith
+MERGED  event_signups.csv line 3: duplicate of Maria Garcia
+MERGED  event_signups.csv line 5: duplicate of Sarah Lee
+REVIEW  event_signups.csv line 6: phone is not 10 digits, unreadable or impossible date
+MERGED  event_signups.csv line 7: duplicate of Tom Becker

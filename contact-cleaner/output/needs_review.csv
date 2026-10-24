@@ -1,0 +1,3 @@
+name,email,phone,state,signup_date,company,source,problems
+Patrick O'Brien,pobrien@yahoo,(555) 330-9911,NY,2025-02-09,O'Brien Plumbing,crm_export.csv line 4,invalid email
+Nina Patel,nina.patel@gmail.com,555-12-345,AZ,04/31/2025,,event_signups.csv line 6,phone is not 10 digits; unreadable or impossible date

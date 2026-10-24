@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .stage { grid-template-columns: 1fr 64px 1fr; }
+  table { border-collapse: collapse; font-size: 17px; width: 100%; }
+  th { text-align: left; color: var(--muted); font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; padding: 0 8px 8px 0; }
+  td { padding: 8px 8px 8px 0; border-top: 1px solid var(--line); white-space: nowrap; }
+  .x { color: var(--bad); }
+  .dup td { color: var(--bad); text-decoration: line-through; }
+  .ok { color: var(--text); }
+  .foot { margin-top: auto; font-size: 18px; color: var(--accent); }
+</style></head>
+<body>
+  <div class="head">
+    <h1>Messy spreadsheet? <em>Fixed.</em></h1>
+    <div class="sub">Excel &amp; Google Sheets cleanup · duplicates · formatting · automation</div>
+  </div>
+  <div class="stage">
+    <div class="panel">
+      <span class="tag bad">BEFORE</span>
+      <table class="mono">
+        <tr><th>Name</th><th>Phone</th><th>State</th><th>Date</th></tr>
+        <tr><td class="x">&nbsp;john SMITH</td><td class="x">555.201.3344</td><td class="x">california</td><td class="x">03/14/2025</td></tr>
+        <tr><td class="x">O'BRIEN, PATRICK</td><td>555-330-9911</td><td class="x">New York</td><td class="x">Feb 9 2025</td></tr>
+        <tr><td>Lisa Wong</td><td class="x">5554410099</td><td class="x">wa</td><td class="x">9/3/25</td></tr>
+        <tr class="dup"><td>John Smith</td><td>5552013344</td><td>CA</td><td>2025-03-14</td></tr>
+        <tr><td class="x">DEREK  JONES</td><td class="x">+1 555 772 0145</td><td class="x">Florida</td><td class="x">2025/01/22</td></tr>
+      </table>
+    </div>
+    <div class="arrow">→</div>
+    <div class="panel">
+      <span class="tag good">AFTER</span>
+      <table class="mono">
+        <tr><th>Name</th><th>Phone</th><th>State</th><th>Date</th></tr>
+        <tr><td>John Smith</td><td>(555) 201-3344</td><td>CA</td><td>2025-03-14</td></tr>
+        <tr><td>Patrick O'Brien</td><td>(555) 330-9911</td><td>NY</td><td>2025-02-09</td></tr>
+        <tr><td>Lisa Wong</td><td>(555) 441-0099</td><td>WA</td><td>2025-09-03</td></tr>
+        <tr><td>Derek Jones</td><td>(555) 772-0145</td><td>FL</td><td>2025-01-22</td></tr>
+      </table>
+      <div class="foot mono">✓ 4 duplicates merged · 2 rows flagged for review</div>
+    </div>
+  </div>
+</body></html>

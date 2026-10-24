@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- FIX 2: viewport tag so phones use the real screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brightside Cleaning Co.</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; margin: 0; color: #222; }
+  header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px 24px; background: #0b6e4f; color: #fff; }
+  .nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { color: #fff; text-decoration: none; }
+  .menu-toggle { display: none; }
+  /* FIX 1: fluid width, readable line length */
+  .hero { max-width: 100%; padding: 80px 24px; background: #e8f5ef; }
+  .hero > * { max-width: 720px; }
+  .hero h1 { font-size: clamp(36px, 7vw, 56px); margin: 0 0 16px; }
+  /* FIX 5: dark green text passes contrast on the light background */
+  .hero p { color: #2f4f43; font-size: 20px; }
+  .services { display: flex; gap: 24px; padding: 40px 24px; }
+  .card { flex: 1; min-width: 0; border: 1px solid #ddd; border-radius: 8px; padding: 20px; }
+  /* FIX 4: images scale down to fit their card */
+  .card img { display: block; max-width: 100%; height: auto; border-radius: 4px; }
+  form { padding: 40px 24px; display: grid; gap: 12px; max-width: 480px; }
+  input, textarea { padding: 10px; font-size: 16px; width: 100%; }
+  .error { color: #b3261e; margin: 0; }
+  .success { color: #0b6e4f; font-weight: bold; margin: 0; }
+  @media (max-width: 700px) {
+    .menu-toggle { display: block; background: none; border: 1px solid #fff; color: #fff; padding: 6px 10px; }
+    .nav-links { display: none; width: 100%; }
+    .nav-links.open { display: flex; flex-direction: column; gap: 12px; }
+    .services { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <strong>Brightside Cleaning</strong>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+  <ul class="nav-links" id="nav">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#quote">Get a quote</a></li>
+  </ul>
+</header>
+
+<section class="hero">
+  <h1>Spotless homes, every time.</h1>
+  <p>Weekly, bi-weekly and move-out cleaning. Insured, background-checked cleaners.</p>
+</section>
+
+<section class="services" id="services">
+  <div class="card">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23cfe8dc'/%3E%3C/svg%3E" alt="Kitchen cleaning">
+    <h3>Standard clean</h3><p>From $120</p>
+  </div>
+  <div class="card">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23b9dfcc'/%3E%3C/svg%3E" alt="Deep cleaning">
+    <h3>Deep clean</h3><p>From $220</p>
+  </div>
+  <div class="card">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23a3d6bd'/%3E%3C/svg%3E" alt="Move-out cleaning">
+    <h3>Move-out clean</h3><p>From $280</p>
+  </div>
+</section>
+
+<form id="quote" novalidate>
+  <h2>Get a free quote</h2>
+  <label for="q-name">Name</label>
+  <input id="q-name" name="name" autocomplete="name" required>
+  <label for="q-email">Email</label>
+  <input id="q-email" name="email" type="email" autocomplete="email" required>
+  <label for="q-details">Details</label>
+  <textarea id="q-details" name="details" placeholder="Home size, how often, any pets?"></textarea>
+  <button type="submit">Send</button>
+  <p class="error" id="q-error" hidden></p>
+  <p class="success" id="q-success" hidden>Thanks! We'll email your quote within one business day.</p>
+</form>
+
+<!-- FIX 3: script at the end of body, after the elements it uses exist -->
+<script>
+  var toggle = document.querySelector('.menu-toggle');
+  var links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  // FIX 6: validate, stop the page reload, and confirm to the visitor
+  document.getElementById('quote').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target, err = document.getElementById('q-error');
+    if (!form.name.value.trim() || !form.email.checkValidity()) {
+      err.textContent = 'Please enter your name and a valid email address.';
+      err.hidden = false;
+      return;
+    }
+    err.hidden = true;
+    // In production: send to the client's email service or form backend here
+    form.querySelector('button').disabled = true;
+    document.getElementById('q-success').hidden = false;
+  });
+</script>
+</body>
+</html>

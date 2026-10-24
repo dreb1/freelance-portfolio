@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .files { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; font-size: 19px; color: #c9d4e5; }
+  .files span:nth-child(3n) { transform: translateX(10px); }
+  .files span:nth-child(4n) { color: var(--muted); }
+  .tree { display: grid; gap: 9px; font-size: 21px; }
+  .tree div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  .tree b { color: var(--good); }
+  .run { margin-top: auto; font-size: 18px; color: var(--accent); }
+</style></head>
+<body>
+  <div class="head">
+    <h1>I'll <em>automate</em> your boring tasks</h1>
+    <div class="sub">Custom Python scripts · tested · delivered in 2 days</div>
+  </div>
+  <div class="stage">
+    <div class="panel">
+      <span class="tag bad">BEFORE</span>
+      <div class="files mono">
+        <span>IMG_2041.jpg</span><span>invoice_0921.pdf</span><span>q3_sales.xlsx</span>
+        <span>notes.txt</span><span>setup.exe</span><span>logo-final-v3.png</span>
+        <span>customers.csv</span><span>podcast_ep12.mp3</span><span>resume.docx</span>
+        <span>backup.zip</span><span>pitch_deck.pptx</span><span>IMG_2042.jpg</span>
+        <span>contract.pdf</span><span>demo.mp4</span><span>script.py</span>
+        <span>random.xyz</span><span>screenshot.png</span><span>report_FINAL2.pdf</span>
+      </div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="panel">
+      <span class="tag good">AFTER</span>
+      <div class="tree mono">
+        <div>📁 Images<b>4</b></div>
+        <div>📁 Documents<b>5</b></div>
+        <div>📁 Spreadsheets<b>2</b></div>
+        <div>📁 Audio &amp; Video<b>2</b></div>
+        <div>📁 Archives<b>1</b></div>
+        <div>📁 Other<b>4</b></div>
+      </div>
+      <div class="run mono">✓ 18 files sorted in 0.2 seconds</div>
+    </div>
+  </div>
+</body></html>

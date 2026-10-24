@@ -1,0 +1,29 @@
+/* Shared look for all gig images: deep ink ground, one warm yellow accent, red/green only for before/after */
+:root {
+  --ink: #101828;
+  --panel: #1b2638;
+  --line: #2c3a52;
+  --text: #f4f6fa;
+  --muted: #9fb0c8;
+  --accent: #ffcf3f;
+  --bad: #ff6b6b;
+  --good: #3ddc97;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1280px; height: 769px; overflow: hidden; }
+body {
+  background: var(--ink); color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  padding: 56px 64px; display: grid; grid-template-rows: auto 1fr; gap: 36px;
+}
+.head { display: grid; gap: 10px; }
+h1 { font-family: "Segoe UI Black", "Segoe UI", sans-serif; font-weight: 900; font-size: 64px; line-height: 1; letter-spacing: -1px; }
+h1 em { font-style: normal; color: var(--accent); }
+.sub { font-size: 26px; color: var(--muted); font-weight: 600; }
+.stage { display: grid; grid-template-columns: 1fr 72px 1fr; align-items: center; min-height: 0; }
+.arrow { font-size: 56px; color: var(--accent); text-align: center; font-weight: 900; }
+.panel { background: var(--panel); border: 2px solid var(--line); border-radius: 14px; padding: 22px 24px; height: 100%; overflow: hidden; display: flex; flex-direction: column; gap: 14px; }
+.tag { align-self: flex-start; font-weight: 800; font-size: 18px; letter-spacing: 2px; padding: 5px 12px; border-radius: 6px; color: var(--ink); }
+.tag.bad { background: var(--bad); }
+.tag.good { background: var(--good); }
+.mono { font-family: Consolas, "Cascadia Mono", monospace; }

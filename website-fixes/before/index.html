@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brightside Cleaning Co.</title>
+<script>
+  // BUG 3: runs before the button exists, so the menu never works
+  document.querySelector('.menu-toggle').addEventListener('click', function () {
+    document.querySelector('.nav-links').classList.toggle('open');
+  });
+</script>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; color: #222; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #0b6e4f; color: #fff; }
+  .nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { color: #fff; text-decoration: none; }
+  .menu-toggle { display: none; }
+  /* BUG 1: fixed width forces sideways scrolling on phones */
+  .hero { width: 1200px; padding: 80px 40px; background: #e8f5ef; }
+  .hero h1 { font-size: 56px; margin: 0 0 16px; }
+  /* BUG 5: light grey on light green is hard to read */
+  .hero p { color: #b5c4bd; font-size: 20px; }
+  .services { display: flex; gap: 24px; padding: 40px; }
+  .card { flex: 1; border: 1px solid #ddd; border-radius: 8px; padding: 20px; }
+  /* BUG 4: images keep their full size and overflow their card */
+  .card img { display: block; }
+  form { padding: 40px; display: grid; gap: 12px; max-width: 480px; }
+  input, textarea { padding: 10px; font-size: 16px; }
+  @media (max-width: 700px) {
+    .menu-toggle { display: block; background: none; border: 1px solid #fff; color: #fff; padding: 6px 10px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; }
+    .services { flex-direction: column; }
+  }
+</style>
+</head>
+<!-- BUG 2: no viewport meta tag, so phones render a zoomed-out desktop page -->
+<body>
+<header>
+  <strong>Brightside Cleaning</strong>
+  <button class="menu-toggle">Menu</button>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#quote">Get a quote</a></li>
+  </ul>
+</header>
+
+<section class="hero">
+  <h1>Spotless homes, every time.</h1>
+  <p>Weekly, bi-weekly and move-out cleaning. Insured, background-checked cleaners.</p>
+</section>
+
+<section class="services" id="services">
+  <div class="card">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23cfe8dc'/%3E%3C/svg%3E" alt="Kitchen cleaning">
+    <h3>Standard clean</h3><p>From $120</p>
+  </div>
+  <div class="card">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23b9dfcc'/%3E%3C/svg%3E" alt="Deep cleaning">
+    <h3>Deep clean</h3><p>From $220</p>
+  </div>
+  <div class="card">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23a3d6bd'/%3E%3C/svg%3E" alt="Move-out cleaning">
+    <h3>Move-out clean</h3><p>From $280</p>
+  </div>
+</section>
+
+<!-- BUG 6: submitting reloads the page and the message is lost; empty forms go through -->
+<form id="quote">
+  <h2>Get a free quote</h2>
+  <input name="name" placeholder="Your name">
+  <input name="email" placeholder="Email">
+  <textarea name="details" placeholder="Home size, how often, any pets?"></textarea>
+  <button>Send</button>
+</form>
+</body>
+</html>
